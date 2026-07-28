@@ -9,14 +9,55 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+        NavigationStack {
+            List {
+                Section("II.1 Declarative UI Mindset") {
+                    NavigationLink("1.1 Imperative") {
+                        MovieBookmarkUIKitView()
+                            .navigationTitle("1.1 Imperative")
+                    }
+                    
+                    NavigationLink("1.2 Declarative") {
+                        MovieBookmarkView()
+                            .navigationTitle("1.2 Declarative")
+                    }
+                    
+                    NavigationLink("5.2 Bookmark Movie State") {
+                        MovieDetailMindsetView()
+                            .navigationTitle("5.2 Bookmark Movie State")
+                    }
+                }
+                
+                Section("II.2 App Lifecycle & Scene-based Architecture") {
+                    NavigationLink("4.3 Timer Count") {
+                        TicketTimerView()
+                            .navigationTitle("4.3 Timer Count")
+                    }
+                }
+                
+                Section("II.3 Retain Cycle") {
+                    NavigationLink("2.2 CineHub Retain Cycle") {
+                        CineHubRetainCycleView()
+                            .navigationTitle("2.2 CineHub Retain Cycle")
+                    }
+                    
+                    NavigationLink("4.1 Retain Cycle In Closure") {
+                        MovieListView()
+                            .navigationTitle("4.1 Retain Cycle In Closure")
+                    }
+                }
+            }
+            .navigationTitle("SwiftUI Course")
         }
-        .padding()
     }
+}
+
+struct MovieBookmarkUIKitView: UIViewControllerRepresentable {
+    func makeUIViewController(context: Context) -> MovieBookmarkViewController {
+        MovieBookmarkViewController(nibName: "MovieBookmarkViewController", bundle: nil)
+    }
+    
+    func updateUIViewController(_ uiViewController: MovieBookmarkViewController, context: Context) {}
 }
 
 #Preview {
