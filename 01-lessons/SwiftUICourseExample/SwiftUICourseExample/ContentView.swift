@@ -46,6 +46,13 @@ struct ContentView: View {
                             .navigationTitle("4.1 Retain Cycle In Closure")
                     }
                 }
+                
+                Section("III.1 SwiftUI Fundamentals") {
+                    NavigationLink("8.2 MovieCardView Code Skeleton") {
+                        MovieEventCardView()
+                            .navigationTitle("8.2 MovieCardView")
+                    }
+                }
             }
             .navigationTitle("SwiftUI Course")
         }
