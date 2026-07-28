@@ -8,15 +8,23 @@
 import Foundation
 
 class TMDBNetworkService {
-    var onDataLoaded: (([String]) -> Void)?
+    private var completionHandler: (([String]) -> Void)?
     
-    func requestData() {
-        // Giả lập sau 2 giây tải dữ liệu xong từ TMDB API
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
-            self.onDataLoaded?(["Avatar", "Oppenheimer", "Dune"])
+    func request(completion: @escaping ([String]) -> Void) {
+        print("TMDBNetworkService bắt đầu giả lập gọi API lấy danh sách phim.")
+        
+        // Giả lập service giữ lại closure để chạy sau khi API trả kết quả.
+        // Nếu closure capture mạnh self, ViewModel -> Service -> Closure -> ViewModel sẽ tạo retain cycle.
+        completionHandler = completion
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) { [weak self] in
+            self?.completionHandler?([
+                "Avatar: Dòng Chảy Của Nước",
+                "Dune: Part Two",
+                "Inside Out 2"
+            ])
         }
     }
-
     
     deinit {
         print("TMDBNetworkService giải phóng bộ nhớ!")
