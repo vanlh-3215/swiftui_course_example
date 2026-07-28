@@ -53,6 +53,18 @@ struct ContentView: View {
                             .navigationTitle("8.2 MovieCardView")
                     }
                 }
+                
+                Section("III.2 State Management") {
+                    NavigationLink("2.3 State Hoisting Example") {
+                        CineHubPaymentView()
+                            .navigationTitle("2.3 State Hoisting")
+                    }
+                    
+                    NavigationLink("6 Data System Of CineHub") {
+                        CineHubStoreView()
+                            .navigationTitle("6 Data System Of CineHub")
+                    }
+                }
             }
             .navigationTitle("SwiftUI Course")
         }
