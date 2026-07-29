@@ -65,6 +65,29 @@ struct ContentView: View {
                             .navigationTitle("6 Data System Of CineHub")
                     }
                 }
+                
+                Section("III.3 Responsive") {
+                    NavigationLink("1.2 Variable Color & Symbol Effects") {
+                        MovieInteractionDemoView()
+                            .navigationTitle("1.2 Symbol Effects")
+                    }
+                    
+                    NavigationLink("4.2 CineHub Adaptive Ticket") {
+                        CineAdaptiveTicketView(
+                            movieTitle: "Dune: Hành Tinh Cát 2",
+                            showTime: "20:00 - 24/12/2026",
+                            ticketPrice: 120000
+                        )
+                        .navigationTitle("4.2 Adaptive Ticket")
+                    }
+                }
+                
+                Section("III.4 Clean Architecture") {
+                    NavigationLink("6 CineHub Clean Architecture") {
+                        CleanMovieDetailView()
+                            .navigationTitle("6 Clean Architecture")
+                    }
+                }
             }
             .navigationTitle("SwiftUI Course")
         }
